@@ -1,3 +1,4 @@
+import pygame 
 class Human:
     """
     Human class which acts as each individual agent. Currently implementing the MVP of the class, which only considers basic movement and screen input.
@@ -16,7 +17,7 @@ class Human:
     
     """
     # initialise class constants
-    VEL = 5
+    VEL = 20
 
     def __init__(self, x, y, img):
         self.x = x
@@ -24,13 +25,27 @@ class Human:
         self.vel = self.VEL
         self.image = img
 
+    # TEST FUNCTION FOR MOVEMENT
+    def handle_keys(self):
+        key = pygame.key.get_pressed()
+        # dist = 50
+
+        if key[pygame.K_DOWN]:
+            self.y += self.vel
+        elif key[pygame.K_UP]:
+            self.y -= self.vel
+        elif key[pygame.K_RIGHT]:
+            self.x += self.vel
+        elif key[pygame.K_LEFT]:
+            self.x -= self.vel
+
     def move_left(self):
-        self.x -= 
+        self.x -= self.vel
     def move_right(self):
-        self.x += 
+        self.x += self.vel
     def move_up(self):
-        self.y -=
+        self.y -= self.vel
     def move_down(self):
-        self.y += 
+        self.y += self.vel
     def draw(self, win):
         win.blit(self.image, (self.x, self.y))
